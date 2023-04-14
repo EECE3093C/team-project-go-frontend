@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Teacher Home</title>
+  </head>
+  <body>
+    <h1>Teacher Home</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Student Name</th>
+          <th>Attendance</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for student in students %}
+          <tr>
+            <td>{{ student.name }}</td>
+            <td>
+              {% for record in records_by_student[student] %}
+                {{ record.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}<br>
+              {% endfor %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
